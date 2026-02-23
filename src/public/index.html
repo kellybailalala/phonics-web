@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TinySteps English</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700&family=Nunito:wght@500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="bg-shape shape-a"></div>
+    <div class="bg-shape shape-b"></div>
+    <main class="app-shell">
+      <header class="hero reveal">
+        <p class="badge">Ages 3-5 | Singapore ESL</p>
+        <h1>TinySteps English</h1>
+        <p class="hero-copy">8-minute playful sessions to build listening, phonics, and vocabulary confidence.</p>
+        <p id="stage-indicator" class="stage-indicator">Page 1 of 6: Parent onboarding</p>
+      </header>
+
+      <section class="flow-book" id="flow-book">
+        <section class="panel stage-page is-active" data-stage="onboarding" id="onboarding-panel">
+          <h2>Parent onboarding</h2>
+          <form id="signup-form" class="stack">
+            <label>Email or phone
+              <input id="signup-identity" name="identity" type="text" required placeholder="parent@email.com or +65..." />
+            </label>
+            <button type="submit" class="btn btn-primary">Create account</button>
+          </form>
+
+          <form id="consent-form" class="stack hidden">
+            <label class="checkbox">
+              <input type="checkbox" id="consent-accepted" required />
+              <span>I consent to child data processing for TinySteps English in Singapore.</span>
+            </label>
+            <button type="submit" class="btn btn-primary">Save consent</button>
+          </form>
+        </section>
+
+        <section class="panel stage-page" data-stage="child" id="child-panel">
+          <h2>Create child profile</h2>
+          <form id="child-form" class="stack">
+            <label>Child display name
+              <input id="child-name" type="text" required placeholder="Ari" />
+            </label>
+            <label>Age in months (36-71)
+              <input id="child-age" type="number" min="36" max="71" required value="48" />
+            </label>
+            <label>Home language
+              <input id="child-language" type="text" required value="Mandarin" />
+            </label>
+            <label>Avatar
+              <select id="child-avatar">
+                <option value="rocket">Rocket</option>
+                <option value="tiger">Tiger</option>
+                <option value="whale">Whale</option>
+                <option value="koala">Koala</option>
+                <option value="panda">Panda</option>
+                <option value="owl">Owl</option>
+              </select>
+            </label>
+            <button type="submit" class="btn btn-primary">Save child profile</button>
+          </form>
+        </section>
+
+        <section class="panel stage-page" data-stage="lesson" id="lesson-panel">
+          <h2>Today's guided lesson</h2>
+          <p id="lesson-summary">Fetch today's lesson to begin.</p>
+          <div class="actions">
+            <button class="btn btn-secondary" id="fetch-lesson-btn">Get today's lesson</button>
+            <button class="btn btn-primary" id="start-session-btn" disabled>Start session</button>
+            <button class="btn btn-secondary" id="open-dashboard-btn">View progress</button>
+          </div>
+        </section>
+
+        <section class="panel stage-page" data-stage="player" id="player-panel">
+          <h2>Child session</h2>
+          <p id="activity-counter"></p>
+          <article class="activity-card" id="activity-card">
+            <h3 id="activity-title"></h3>
+            <p id="activity-skill"></p>
+            <p id="activity-assets"></p>
+            <div class="actions">
+              <button class="btn btn-secondary" id="play-audio-btn">Play prompt audio</button>
+              <button class="btn btn-primary" id="done-activity-btn">I did it!</button>
+            </div>
+          </article>
+        </section>
+
+        <section class="panel stage-page" data-stage="reward" id="reward-panel">
+          <h2>Reward earned</h2>
+          <p id="reward-label" class="reward"></p>
+          <p>Come back tomorrow for a new 8-minute adventure.</p>
+          <div class="actions">
+            <button class="btn btn-primary" id="go-dashboard-btn">Go to progress</button>
+            <button class="btn btn-secondary" id="back-to-lesson-from-reward-btn">Back to lesson page</button>
+          </div>
+        </section>
+
+        <section class="panel stage-page" data-stage="dashboard" id="dashboard-panel">
+          <h2>Parent dashboard</h2>
+          <div id="dashboard-grid" class="metric-grid"></div>
+          <div class="actions">
+            <button class="btn btn-secondary" id="refresh-progress-btn">Refresh progress</button>
+            <button class="btn btn-secondary" id="back-to-lesson-btn">Back to lesson</button>
+            <button class="btn btn-danger" id="delete-data-btn">Request child data deletion</button>
+          </div>
+          <p id="deletion-status"></p>
+        </section>
+      </section>
+
+      <section class="panel retry-overlay hidden" id="retry-panel">
+        <h2>Network hiccup</h2>
+        <p id="error-message"></p>
+        <button class="btn btn-secondary" id="retry-btn">Retry last action</button>
+      </section>
+
+      <p id="status" class="status" aria-live="polite"></p>
+    </main>
+
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>
